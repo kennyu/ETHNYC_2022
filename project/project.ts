@@ -4,7 +4,7 @@ import { uma } from '@uma/sdk'
 
 const ethSDK = TatumEthSDK({ apiKey: process.env.API_KEY })
 
-export async function ethWalletTest() {
+async function ethWalletCreate() {
   const { mnemonic, xpub } = await ethSDK.wallet.generateWallet()
 
   const address = ethSDK.wallet.generateAddressFromXPub(mnemonic, 0)
@@ -26,4 +26,21 @@ async function events() {
 
     // see all requests given even details
     console.log(state.requests)
+}
+
+contract MotivationalWallet {
+
+    mapping(uint => address) public users;// A mapping to store ethereum addresses of the users
+    mapping(uint => ) eth_balance; //keep track of how many eth people owned
+    address owner; // owner of the contract
+
+    //constructor
+    function MotivationalWallet(){
+        owner = msg.sender;
+    }
+
+    //adjust the ante, player number and percentage for the winner
+    function changeParameters(uint , uint8 , uint ) {
+
+    }
 }
